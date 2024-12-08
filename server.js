@@ -1,26 +1,25 @@
-require('dotenv').config();
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 
 const app = express();
-const port = process.env.PORT || 3000; 
-
-const conn = mysql.createConnection(process.env.MYSQL_PUBLIC_URL);
+const port = 3000; 
 
 const cors = require('cors');
-app.use(cors({
-    origin:['//https://jroglic.github.io/Projekat/'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
-}));
+app.use(cors());
 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-
+// Povezivanje na bazu podataka
+const conn = mysql.createConnection({
+    host: 'localhost',
+    user: 'root', 
+    password: '12345', 
+    database: 'recipevault'
+});
 
 // Proveri povezivanje
 conn.connect((err) => {
@@ -30,11 +29,6 @@ conn.connect((err) => {
         console.log('Uspešno povezivanje na bazu podataka.');
     }
 });
-
-app.get('/', (req, res) => {
-    res.send('Welcome to RecipeVault API');
-});
-
 
 // Ruta za autentifikaciju korisnika
 app.post('/login', (req, res) => {
@@ -539,18 +533,6 @@ app.get('/javneListe', (req, res) => {
         res.json(results);
     });
 });
-
-app.get('/publicRecepti', (req, res) => {
-    const query = 'SELECT * FROM recepti WHERE rec_javno = 1'; // Primer: dodati logiku za javne recepte
-    conn.query(query, (err, results) => {
-        if (err) {
-            console.error('Greška prilikom dobavljanja javnih recepata:', err);
-            return res.status(500).send('Greška prilikom dobavljanja recepata');
-        }
-        res.json(results);
-    });
-});
-
 
 
 
