@@ -36,6 +36,11 @@ conn.connect((err) => {
     }
 });
 
+app.get('/', (req, res) => {
+    res.send('Welcome to RecipeVault API');
+});
+
+
 // Ruta za autentifikaciju korisnika
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
