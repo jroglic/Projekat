@@ -88,7 +88,29 @@
 - Sistem za registrovanje i prijavu korisnika putem OAuth-a
 
 ## 🖼️ Screenshotovi
-(Dodajte slike aplikacije ovde)
+### Prikaz Home strane
+![Prikaz home strane](https://github.com/jroglic/Projekat/blob/main/1.png?raw=true)
+
+### Prikaz login forme
+![Prikaz login forme](https://github.com/jroglic/Projekat/blob/main/2.png?raw=true)
+
+### Profilna strana ulogovanog korisnika
+![Prikaz profilne strane](https://github.com/jroglic/Projekat/blob/main/3.png?raw=true)
+
+### Lista recepata
+![Prikaz liste recepata](https://github.com/jroglic/Projekat/blob/main/4.png?raw=true)
+
+### Kreiranje liste
+![Prikaz kreiranja liste](https://github.com/jroglic/Projekat/blob/main/5.png?raw=true)
+
+### Prikaz recepta i dodavanje komentara
+![Prikaz recepta i dodavanje komentara](https://github.com/jroglic/Projekat/blob/main/6.png?raw=true)
+
+### Unos novog recepta
+![Forma za unos recepta](https://github.com/jroglic/Projekat/blob/main/7.png?raw=true)
+
+### Baza podataka
+![Baza podataka](https://github.com/jroglic/Projekat/blob/main/bazapodataka.png?raw=true)
 
 ## 📄 Licenca
 
