@@ -3,10 +3,13 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 
 const app = express();
-const port = 3000; 
+const port = process.env.PORT || 3000; 
 
 const cors = require('cors');
-app.use(cors());
+app.use(cors({
+    origin:['//https://jroglic.github.io/Projekat/'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+}));
 
 
 app.use(bodyParser.json());
@@ -533,6 +536,18 @@ app.get('/javneListe', (req, res) => {
         res.json(results);
     });
 });
+
+app.get('/publicRecepti', (req, res) => {
+    const query = 'SELECT * FROM recepti WHERE rec_javno = 1'; // Primer: dodati logiku za javne recepte
+    conn.query(query, (err, results) => {
+        if (err) {
+            console.error('Greška prilikom dobavljanja javnih recepata:', err);
+            return res.status(500).send('Greška prilikom dobavljanja recepata');
+        }
+        res.json(results);
+    });
+});
+
 
 
 
