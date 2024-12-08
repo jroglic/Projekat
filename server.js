@@ -1,9 +1,18 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 
 const app = express();
 const port = process.env.PORT || 3000; 
+
+const conn = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+});
 
 const cors = require('cors');
 app.use(cors({
@@ -16,13 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-// Povezivanje na bazu podataka
-const conn = mysql.createConnection({
-    host: 'localhost',
-    user: 'root', 
-    password: '12345', 
-    database: 'recipevault'
-});
+
 
 // Proveri povezivanje
 conn.connect((err) => {
